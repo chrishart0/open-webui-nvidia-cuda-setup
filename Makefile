@@ -5,6 +5,16 @@ else
     DOCKER_COMPOSE := docker compose
 endif
 
+setup:
+	@if [ ! -f .env ]; then \
+		echo "no .env file found, copying default .env file..."; \
+		cp initial-setup-configs/.env .env; \
+	fi
+	@if [ ! -d data/initial-setup-configs ]; then  \
+		echo "no data folder found, copying default data folder..."; \
+		cp -r initial-setup-configs/openedai-speech data/; \
+	fi
+
 install:
 	$(DOCKER_COMPOSE) up -d
 
@@ -12,7 +22,7 @@ remove:
 	@chmod +x confirm_remove.sh
 	@./confirm_remove.sh
 
-start run:
+start run: setup
 	./run-compose.sh --webui[port=3030] --enable-gpu --enable-api --ollama-data[folder=./data/ollama] --open-webui-data[folder=./data/open-webui]
 
 down:
@@ -28,14 +38,7 @@ startAndBuild:
 stop:
 	$(DOCKER_COMPOSE) stop
 
-update:
-	# Calls the LLM update script
-	chmod +x update_ollama_models.sh
-	@./update_ollama_models.sh
-	@git pull
-	$(DOCKER_COMPOSE) down
-	# Make sure the ollama-webui container is stopped before rebuilding
-	@docker stop open-webui || true
-	$(DOCKER_COMPOSE) up --build -d
-	$(DOCKER_COMPOSE) start
+clean: down
+	$(DOCKER_COMPOSE) down --remove-orphans --volumes
+	sudo rm -rf data/*
 

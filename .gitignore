@@ -8,3 +8,6 @@ data/openedai-speech/config/*
 
 # Need this default config file for openedai-speech to work, it automatically gets copied to the right place on first container spin up
 !data/openedai-speech/config/*.default.yaml
+
+# Gotta make sure we don't commit any .env files with secrets 
+.env
