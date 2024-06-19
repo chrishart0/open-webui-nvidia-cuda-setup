@@ -18,13 +18,7 @@ services:
       - openedai-speech
     ports:
       - ${OPEN_WEBUI_PORT-3000}:8080
-    environment:
-      - 'OLLAMA_BASE_URL=http://ollama:11434'
-      - 'AUDIO_TTS_OPENAI_API_BASE_URL=http://openedai-speech:8000/v1'
-      - 'WEBUI_SECRET_KEY='
-      - 'AUDIO_TTS_OPENAI_API_KEY=sk-111111111'
-      - 'AUDIO_TTS_MODEL=tts-1-hd'
-      - 'AUDIO_TTS_VOICE=alloy'
+    env_file: .env.open-webui
       
     extra_hosts:
       - host.docker.internal:host-gateway

@@ -10,4 +10,5 @@ data/openedai-speech/config/*
 !data/openedai-speech/config/*.default.yaml
 
 # Gotta make sure we don't commit any .env files with secrets 
-.env
+/.env
+/.env.*

@@ -7,8 +7,8 @@ endif
 
 setup:
 	@if [ ! -f .env ]; then \
-		echo "no .env file found, copying default .env file..."; \
-		cp initial-setup-configs/.env .env; \
+		echo "no .env file found, copying default .env files"; \
+		cp initial-setup-configs/.env.* .; \
 	fi
 	@if [ ! -d data/initial-setup-configs ]; then  \
 		echo "no data folder found, copying default data folder..."; \
