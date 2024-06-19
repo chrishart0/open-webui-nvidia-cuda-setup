@@ -6,9 +6,9 @@ else
 endif
 
 setup:
-	@if [ ! -f .env ]; then \
-		echo "no .env file found, copying default .env files"; \
-		cp initial-setup-configs/.env.* .; \
+	@if [ ! -f .env.open-webui ]; then \
+		echo "no .env.open-webui file found, copying default .env.open-webui file"; \
+		cp initial-setup-configs/.env.open-webui .; \
 	fi
 	@if [ ! -d data/initial-setup-configs ]; then  \
 		echo "no data folder found, copying default data folder..."; \
