@@ -56,6 +56,13 @@ Delete all the data for OpenWeb UI and Ollama
 make clean
 ```
 
+## Customizing Text-To-Speech Voice
+
+To select other text-to-speech voice or train your own read more at: <https://github.com/matatonic/openedai-speech/tree/main?tab=readme-ov-file#custom-voices-howto>
+
+
+
+
 ## Contribute
 Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or create a fork and submit a pull request against the [ GitHub repo](https://github.com/chrishart0/open-webui-nvidia-cuda-setup). We appreciate your contributions to make this project even better!
 

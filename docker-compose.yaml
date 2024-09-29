@@ -8,8 +8,9 @@ services:
     restart: unless-stopped
     image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
 
+# Latest releases found here: https://github.com/open-webui/open-webui/releases
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.3.5 #${WEBUI_DOCKER_TAG-main}
+    image: ghcr.io/open-webui/open-webui:v0.3.30 #${WEBUI_DOCKER_TAG-main}
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
@@ -24,8 +25,9 @@ services:
       - host.docker.internal:host-gateway
     restart: unless-stopped
 
+  # Latest version found here: https://github.com/matatonic/openedai-speech/releases/tag/0.18.2
   openedai-speech:
-    image: ghcr.io/matatonic/openedai-speech
+    image: ghcr.io/matatonic/openedai-speech:0.18.2
     container_name: openedai-speech
     # env_file: .env
     environment:
@@ -40,6 +42,13 @@ services:
     # labels:
     #   - "com.centurylinklabs.watchtower.enable=true"
     restart: unless-stopped
+
+  cloudflared-tunnel:
+    container_name: cloudflared-tunnel
+    image: cloudflare/cloudflared #ToDo: Peg this as a version
+    restart: unless-stopped
+    command: tunnel run
+    env_file: .env.cloudflared
 
 volumes:
   ollama: {}
