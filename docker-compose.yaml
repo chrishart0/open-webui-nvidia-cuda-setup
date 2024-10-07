@@ -1,4 +1,5 @@
 services:
+  # https://hub.docker.com/r/ollama/ollama
   ollama:
     volumes:
       - ollama:/root/.ollama
@@ -6,11 +7,11 @@ services:
     pull_policy: always
     tty: true
     restart: unless-stopped
-    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+    image: ollama/ollama:0.3.12 #${OLLAMA_DOCKER_TAG-latest}
 
 # Latest releases found here: https://github.com/open-webui/open-webui/releases
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.3.30 #${WEBUI_DOCKER_TAG-main}
+    image: ghcr.io/open-webui/open-webui:v0.3.32 #${WEBUI_DOCKER_TAG-main}
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
@@ -43,9 +44,10 @@ services:
     #   - "com.centurylinklabs.watchtower.enable=true"
     restart: unless-stopped
 
+  # https://hub.docker.com/r/cloudflare/cloudflared
   cloudflared-tunnel:
     container_name: cloudflared-tunnel
-    image: cloudflare/cloudflared #ToDo: Peg this as a version
+    image: cloudflare/cloudflared:2024.9.1
     restart: unless-stopped
     command: tunnel run
     env_file: .env.cloudflared

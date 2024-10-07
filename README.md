@@ -13,10 +13,12 @@ Services configured to run out of the box
 - [x] Open WebUI with local data persistence in `./data/open-webui`
 - [X] Ollama Container utilizing GPU with local data persistence in `./data/ollama`
 - [X] Local TTS with [Openedai-speech](https://github.com/matatonic/openedai-speech) configure out of the box
+- [X] Support CloudFlare Tunnel into OpenWeb UI
 
 ### ToDo
 
-- [ ] Optionally allow public traffic to the Open WebUI container only via CloudFlare tunnel
+- [ ] Basic GitHub actions workflow to test initial setup 
+- [ ] Make CloudFlare tunnel optional
 - [ ] Local network HTTPS provided by a reverse proxy container + Certbot
 - [ ] Data backup functionality
 - [ ] Image generation with Stable Diffusion running locally
@@ -60,8 +62,11 @@ make clean
 
 To select other text-to-speech voice or train your own read more at: <https://github.com/matatonic/openedai-speech/tree/main?tab=readme-ov-file#custom-voices-howto>
 
+## Setup CloudFlare tunnel
 
-
+1. Go setup your free tier tunnel <https://www.cloudflare.com/products/tunnel/>
+2. Get a CloudFlare tunnel token: <https://developers.cloudflare.com/cloudflare-one/identity/service-tokens/#create-a-service-token>
+3. Copy the `.env.cloudflared.example` to create a `.env.cloudflared` and put your new token into it
 
 ## Contribute
 Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or create a fork and submit a pull request against the [ GitHub repo](https://github.com/chrishart0/open-webui-nvidia-cuda-setup). We appreciate your contributions to make this project even better!
