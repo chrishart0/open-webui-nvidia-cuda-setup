@@ -12,3 +12,6 @@ data/openedai-speech/config/*
 # Gotta make sure we don't commit any .env files with secrets 
 /.env
 /.env.*
+
+# Inclide /.env.*.example files
+!/.env.*.example
