@@ -5,6 +5,8 @@ data/open-webui/
 data/openedai-speech/voices/
 data/ollama/
 data/openedai-speech/config/*
+data/Extra\ Space/
+data/
 
 # Need this default config file for openedai-speech to work, it automatically gets copied to the right place on first container spin up
 !data/openedai-speech/config/*.default.yaml
