@@ -7,11 +7,11 @@ services:
     pull_policy: always
     tty: true
     restart: unless-stopped
-    image: ollama/ollama:0.4.2 #${OLLAMA_DOCKER_TAG-latest}
+    image: ollama/ollama:0.4.4 #${OLLAMA_DOCKER_TAG-latest}
 
 # Latest releases found here: https://github.com/open-webui/open-webui/releases
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.3.35 #${WEBUI_DOCKER_TAG-main}
+    image: ghcr.io/open-webui/open-webui:v0.4.4 #${WEBUI_DOCKER_TAG-main}
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
@@ -47,7 +47,7 @@ services:
   # https://hub.docker.com/r/cloudflare/cloudflared
   cloudflared-tunnel:
     container_name: cloudflared-tunnel
-    image: cloudflare/cloudflared:2024.11.0
+    image: cloudflare/cloudflared:2024.11.1
     restart: unless-stopped
     command: tunnel run
     env_file: .env.cloudflared
