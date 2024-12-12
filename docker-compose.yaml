@@ -7,11 +7,11 @@ services:
     pull_policy: always
     tty: true
     restart: unless-stopped
-    image: ollama/ollama:0.4.4 #${OLLAMA_DOCKER_TAG-latest}
+    image: ollama/ollama:0.5.1 #${OLLAMA_DOCKER_TAG-latest}
 
 # Latest releases found here: https://github.com/open-webui/open-webui/releases
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.4.4 #${WEBUI_DOCKER_TAG-main}
+    image: ghcr.io/open-webui/open-webui:v0.4.8 #${WEBUI_DOCKER_TAG-main}
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
@@ -21,7 +21,11 @@ services:
     ports:
       - ${OPEN_WEBUI_PORT-3000}:8080
     env_file: .env.open-webui
-      
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     extra_hosts:
       - host.docker.internal:host-gateway
     restart: unless-stopped
