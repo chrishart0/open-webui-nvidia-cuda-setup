@@ -67,6 +67,9 @@ To select other text-to-speech voice or train your own read more at: <https://gi
 1. Go setup your free tier tunnel <https://www.cloudflare.com/products/tunnel/>
 2. Get a CloudFlare tunnel token: <https://developers.cloudflare.com/cloudflare-one/identity/service-tokens/#create-a-service-token>
 3. Copy the `.env.cloudflared.example` to create a `.env.cloudflared` and put your new token into it
+    ```
+    cp .env.cloudflared.example .env.cloudflared
+    ```
 
 ## Contribute
 Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or create a fork and submit a pull request against the [ GitHub repo](https://github.com/chrishart0/open-webui-nvidia-cuda-setup). We appreciate your contributions to make this project even better!
